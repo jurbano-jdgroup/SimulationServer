@@ -221,7 +221,7 @@ public class MainWorker extends ThreadWorkerAbstract {
                     num.set(0, 0, 0.0);
                     num.set(1, 0, 1.5);
                     den.set(1, 0, 1.0);
-                    den.set(0, 0, 0.8);
+                    den.set(0, 0, 1.5);
                     
                     try {
                         system = new simulationserver.control.System(num, den);
