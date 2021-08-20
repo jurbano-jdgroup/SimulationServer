@@ -1,6 +1,9 @@
 
 package simulationserver;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Ernesto
@@ -209,6 +212,46 @@ public class MainWorker extends ThreadWorkerAbstract {
                     system.s_b = groupsTaos[groupIndex];
                     
                     this.server.setModel(system);
+                }
+                else if (systemValue.compareToIgnoreCase("pid_rst_vel") == 0)
+                {
+                    simulationserver.control.System system;
+                    final simulationserver.maths.BaseMatrix num = new simulationserver.maths.BaseMatrix(2, 1);
+                    final simulationserver.maths.BaseMatrix den = new simulationserver.maths.BaseMatrix(2, 1);
+                    num.set(0, 0, 0.0);
+                    num.set(1, 0, 1.5);
+                    den.set(1, 0, 1.0);
+                    den.set(0, 0, 0.8);
+                    
+                    try {
+                        system = new simulationserver.control.System(num, den);
+                        system.setStepSize(sampleTime);
+                        this.server.setModel(system);
+                    } catch (Exception ex) {
+                        System.out.println("Error setting the pid_rst model: "+ex.getMessage());
+                        System.exit(0);
+                    }
+                }
+                else if (systemValue.compareToIgnoreCase("pid_rst_pos") == 0) 
+                {
+                    simulationserver.control.System system;
+                    final simulationserver.maths.BaseMatrix num = new simulationserver.maths.BaseMatrix(3, 1);
+                    final simulationserver.maths.BaseMatrix den = new simulationserver.maths.BaseMatrix(3, 1);
+                    num.set(0, 0, 0.0);
+                    num.set(1, 0, 0.0);
+                    num.set(2, 0, 1.5);
+                    den.set(2, 0, 0.0);
+                    den.set(1, 0, 2.0);
+                    den.set(0, 0, 1.6);
+                    
+                    try {
+                        system = new simulationserver.control.System(num, den);
+                        system.setStepSize(sampleTime);
+                        this.server.setModel(system);
+                    } catch (Exception ex) {
+                        System.out.println("Error setting the pid_rst model: "+ex.getMessage());
+                        System.exit(0);
+                    }
                 }
                 else if (systemValue.compareToIgnoreCase("pid") == 0) 
                 {

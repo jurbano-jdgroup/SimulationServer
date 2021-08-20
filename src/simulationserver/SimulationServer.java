@@ -13,7 +13,7 @@ public class SimulationServer {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /*RuntimeConfiguration config = new RuntimeConfiguration();
+        RuntimeConfiguration config = new RuntimeConfiguration();
         
         if(!config.parseArgs(args, false)) {
             config.printUSage();
@@ -24,8 +24,9 @@ public class SimulationServer {
         
         MainWorker worker = new MainWorker(config);
         worker.setExecutionStep(1000);
-        worker.start();*/
+        worker.start();
         
+        /*
         BaseMatrix num = new BaseMatrix(3,1);
         num.fill(0.0);
         num.set(2, 0, 4.0);
@@ -55,6 +56,6 @@ public class SimulationServer {
         worker.server.setBacklog(5);
         worker.server.setModel(system);
         worker.setExecutionStep(1000);
-        worker.start();
+        worker.start();*/
     }
 }
