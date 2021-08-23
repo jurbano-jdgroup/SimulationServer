@@ -1,7 +1,7 @@
 
-package simulationserver.control;
+package simulationserver.system;
 
-import simulationserver.maths.Matrix;
+import simulationserver.system.maths.Matrix;
 
 /**
  *

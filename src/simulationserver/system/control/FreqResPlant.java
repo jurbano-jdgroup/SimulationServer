@@ -1,7 +1,5 @@
 
-package simulationserver.control;
-
-import simulationserver.SecondOrderSystem;
+package simulationserver.system.control;
 
 /**
  *

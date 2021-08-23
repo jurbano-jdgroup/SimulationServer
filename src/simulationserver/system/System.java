@@ -1,9 +1,8 @@
 
-package simulationserver.control;
+package simulationserver.system;
 
-import simulationserver.RTAbstractModel;
-import simulationserver.maths.BaseMatrix;
-import simulationserver.maths.Matrix;
+import simulationserver.system.maths.BaseMatrix;
+import simulationserver.system.maths.Matrix;
 
 /**
  *

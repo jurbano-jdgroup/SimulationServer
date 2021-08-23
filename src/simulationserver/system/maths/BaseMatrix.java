@@ -1,5 +1,5 @@
 
-package simulationserver.maths;
+package simulationserver.system.maths;
 
 /**
  *

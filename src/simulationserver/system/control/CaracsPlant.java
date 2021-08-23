@@ -1,11 +1,11 @@
 
-package simulationserver.control;
+package simulationserver.system.control;
 
 /**
  *
  * @author Ernesto
  */
-public class CaracsPlant extends simulationserver.FirstOrderSystem {
+public class CaracsPlant extends simulationserver.system.control.FirstOrderSystem {
     
     public CaracsPlant() {
         super();

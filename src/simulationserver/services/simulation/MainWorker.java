@@ -1,8 +1,12 @@
 
-package simulationserver;
+package simulationserver.services.simulation;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import simulationserver.RuntimeConfiguration;
+import simulationserver.system.control.ThirdOrderSystem;
+import simulationserver.system.RTAbstractModel;
+import simulationserver.system.control.SecondOrderSystem;
+import simulationserver.system.control.FirstOrderSystem;
+import simulationserver.system.control.ThirdOrderSystem;
 
 /**
  *
@@ -189,7 +193,7 @@ public class MainWorker extends ThreadWorkerAbstract {
                 }
                 else if (systemValue.compareToIgnoreCase("freqres") == 0) 
                 {
-                    simulationserver.control.FreqResPlant system = new simulationserver.control.FreqResPlant();
+                    simulationserver.system.control.FreqResPlant system = new simulationserver.system.control.FreqResPlant();
                     system.setStepSize(sampleTime);
                     system.setMaxInputValue(10.0);
                     system.setMinInputValue(-10.0);
@@ -198,7 +202,7 @@ public class MainWorker extends ThreadWorkerAbstract {
                 }
                 else if (systemValue.compareToIgnoreCase("caracs") == 0)
                 {
-                    simulationserver.control.CaracsPlant system = new simulationserver.control.CaracsPlant();
+                    simulationserver.system.control.CaracsPlant system = new simulationserver.system.control.CaracsPlant();
                     system.setStepSize(sampleTime);
                     system.setMaxOutputValue(10.0);
                     system.setMaxDeadZoneValue(2.5);
@@ -215,16 +219,16 @@ public class MainWorker extends ThreadWorkerAbstract {
                 }
                 else if (systemValue.compareToIgnoreCase("pid_rst_vel") == 0)
                 {
-                    simulationserver.control.System system;
-                    final simulationserver.maths.BaseMatrix num = new simulationserver.maths.BaseMatrix(2, 1);
-                    final simulationserver.maths.BaseMatrix den = new simulationserver.maths.BaseMatrix(2, 1);
+                    simulationserver.system.System system;
+                    final simulationserver.system.maths.BaseMatrix num = new simulationserver.system.maths.BaseMatrix(2, 1);
+                    final simulationserver.system.maths.BaseMatrix den = new simulationserver.system.maths.BaseMatrix(2, 1);
                     num.set(0, 0, 0.0);
                     num.set(1, 0, 1.5);
                     den.set(1, 0, 1.0);
                     den.set(0, 0, 1.5);
                     
                     try {
-                        system = new simulationserver.control.System(num, den);
+                        system = new simulationserver.system.System(num, den);
                         system.setStepSize(sampleTime);
                         this.server.setModel(system);
                     } catch (Exception ex) {
@@ -234,9 +238,9 @@ public class MainWorker extends ThreadWorkerAbstract {
                 }
                 else if (systemValue.compareToIgnoreCase("pid_rst_pos") == 0) 
                 {
-                    simulationserver.control.System system;
-                    final simulationserver.maths.BaseMatrix num = new simulationserver.maths.BaseMatrix(3, 1);
-                    final simulationserver.maths.BaseMatrix den = new simulationserver.maths.BaseMatrix(3, 1);
+                    simulationserver.system.System system;
+                    final simulationserver.system.maths.BaseMatrix num = new simulationserver.system.maths.BaseMatrix(3, 1);
+                    final simulationserver.system.maths.BaseMatrix den = new simulationserver.system.maths.BaseMatrix(3, 1);
                     num.set(0, 0, 0.0);
                     num.set(1, 0, 0.0);
                     num.set(2, 0, 1.5);
@@ -245,7 +249,7 @@ public class MainWorker extends ThreadWorkerAbstract {
                     den.set(0, 0, 1.6);
                     
                     try {
-                        system = new simulationserver.control.System(num, den);
+                        system = new simulationserver.system.System(num, den);
                         system.setStepSize(sampleTime);
                         this.server.setModel(system);
                     } catch (Exception ex) {
@@ -255,7 +259,7 @@ public class MainWorker extends ThreadWorkerAbstract {
                 }
                 else if (systemValue.compareToIgnoreCase("pid") == 0) 
                 {
-                    simulationserver.experimental.Controlador pid = new simulationserver.experimental.Controlador();
+                    simulationserver.system.control.Controlador pid = new simulationserver.system.control.Controlador();
                     
                     pid.Kp = kp;
                     pid.Ti = ki;
@@ -277,7 +281,7 @@ public class MainWorker extends ThreadWorkerAbstract {
                     
                     // show if setpoint gui must be shown
                     if (showSetpointGui) {
-                        final simulationserver.gui.SetpointHandler setHandler = new simulationserver.gui.SetpointHandler();
+                        final simulationserver.system.gui.SetpointHandler setHandler = new simulationserver.system.gui.SetpointHandler();
                         setHandler.setModel(pid);
                         setHandler.setMaxValue(setpointMax);
                         setHandler.setMinValue(setpointMin);
@@ -287,7 +291,7 @@ public class MainWorker extends ThreadWorkerAbstract {
                 }
                 // predefined systems
                 else if (systemValue.compareToIgnoreCase("planta1") == 0) {
-                    simulationserver.control.Planta1 planta1 = new simulationserver.control.Planta1();
+                    simulationserver.system.control.Planta1 planta1 = new simulationserver.system.control.Planta1();
                     planta1.s_t = 20.0;
                     planta1.setDelayTime(20.0);
                     final int multiple = (int) (planta1.s_t / sampleTime);
@@ -297,13 +301,13 @@ public class MainWorker extends ThreadWorkerAbstract {
                     
                     this.server.setModel(planta1);
                 } else if (systemValue.compareToIgnoreCase("planta2") == 0) {
-                    simulationserver.control.Planta2 planta2 = new simulationserver.control.Planta2();
+                    simulationserver.system.control.Planta2 planta2 = new simulationserver.system.control.Planta2();
                     
                     planta2.setStepSize(sampleTime);
                     
                     this.server.setModel(planta2);
                 } else if (systemValue.compareToIgnoreCase("planta3") == 0) {
-                    simulationserver.control.Planta3 planta3 = new simulationserver.control.Planta3();
+                    simulationserver.system.control.Planta3 planta3 = new simulationserver.system.control.Planta3();
                     planta3.s_t = 3.0;
                     planta3.setDelayTime(3.0);
                     final int multiple = (int) (planta3.s_t / sampleTime);
@@ -312,7 +316,7 @@ public class MainWorker extends ThreadWorkerAbstract {
                     
                     this.server.setModel(planta3);
                 } else if (systemValue.compareToIgnoreCase("planta4") == 0) {
-                    simulationserver.control.Planta4 planta4 = new simulationserver.control.Planta4();
+                    simulationserver.system.control.Planta4 planta4 = new simulationserver.system.control.Planta4();
                     planta4.s_t = 3.0;
                     planta4.setDelayTime(3.0);
                     final int multiple = (int) (planta4.s_t / sampleTime);

@@ -1,11 +1,11 @@
 
-package simulationserver.experimental;
+package simulationserver.system.control;
 
 /**
  *
  * @author Garcia, Ochoa
  */
-public class Controlador extends simulationserver.RTAbstractModel {
+public class Controlador extends simulationserver.system.RTAbstractModel {
 
     public double sat_max=100.0, sat_min=-100.0;
     public double referencia, disturbio = 0;

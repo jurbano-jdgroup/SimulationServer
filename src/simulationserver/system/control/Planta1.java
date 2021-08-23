@@ -1,11 +1,11 @@
 
-package simulationserver.control;
+package simulationserver.system.control;
 
 /**
  *
  * @author Ernesto
  */
-public class Planta1 extends simulationserver.SecondOrderSystem {
+public class Planta1 extends simulationserver.system.control.SecondOrderSystem {
     
     // time delay: 20s
     public Planta1() {

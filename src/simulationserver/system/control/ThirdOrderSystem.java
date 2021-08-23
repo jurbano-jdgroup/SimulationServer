@@ -1,5 +1,7 @@
 
-package simulationserver;
+package simulationserver.system.control;
+
+import simulationserver.system.RTAbstractModel;
 
 /**
  *
@@ -16,7 +18,7 @@ public class ThirdOrderSystem extends RTAbstractModel {
     protected double x3;
     
     // constructor
-    ThirdOrderSystem () {
+    public ThirdOrderSystem () {
         super();
         // init step size
         step_size = 0.0;

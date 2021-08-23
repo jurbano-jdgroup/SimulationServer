@@ -1,4 +1,6 @@
-package simulationserver;
+package simulationserver.services.simulation;
+
+import simulationserver.system.RTAbstractModel;
 
 /**
  *

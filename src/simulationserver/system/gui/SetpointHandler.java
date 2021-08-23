@@ -1,5 +1,5 @@
 
-package simulationserver.gui;
+package simulationserver.system.gui;
 
 import java.awt.Component;
 import javax.swing.event.ChangeEvent;
@@ -18,7 +18,7 @@ public class SetpointHandler extends java.lang.Thread implements javax.swing.eve
     private double minValue = 100.0;
     private double value = 0.0;
     // dynamic model
-    private simulationserver.experimental.Controlador model;
+    private simulationserver.system.control.Controlador model;
     // constructor
     public SetpointHandler () {
         super();
@@ -46,7 +46,7 @@ public class SetpointHandler extends java.lang.Thread implements javax.swing.eve
         frame.add(panel);
     }
     
-    public void setModel (simulationserver.experimental.Controlador model) {
+    public void setModel (simulationserver.system.control.Controlador model) {
         this.model = model;
     }
     

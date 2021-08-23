@@ -1,5 +1,5 @@
 
-package simulationserver;
+package simulationserver.system;
 
 /**
  *

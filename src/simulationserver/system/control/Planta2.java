@@ -1,11 +1,11 @@
 
-package simulationserver.control;
+package simulationserver.system.control;
 
 /**
  *
  * @author Ernesto
  */
-public class Planta2 extends simulationserver.SecondOrderSystem {
+public class Planta2 extends simulationserver.system.control.SecondOrderSystem {
     
     public Planta2() {
         super();

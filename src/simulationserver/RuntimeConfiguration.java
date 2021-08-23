@@ -23,7 +23,8 @@ public class RuntimeConfiguration {
         {"maxconnections", true, false, "Maximo numero de conexiones, por defecto 5", RuntimeConfiguration.UNSIGNER_INT_TYPE},
         {"inputsampling", true, false, "e.g: 10, 5, 200... Muestreo de entrada, por defecto 10 ms", RuntimeConfiguration.UNSIGNER_INT_TYPE},
         {"outputsampling", true, false, "Muestreo de salida, por defecto 1 ms", RuntimeConfiguration.UNSIGNER_INT_TYPE},
-        {"system", true, true, "Obligatorio. Dinamica, puede ser: [firstorder] para un sistema de primer orden,"+
+        {"service", true, false, "Servicio", RuntimeConfiguration.TEXT_TYPE},
+        {"system", true, false, "Obligatorio. Dinamica, puede ser: [firstorder] para un sistema de primer orden,"+
             " [secondorder] para un sistema de segundo order, [pid] para un controlador, "+
             "[thirdorder] para un sistema de tercer order predefinido, [freqres] o [planta1], [planta2], "+
             "[planta3], [planta4] para usar las dinámicas predefinidas", RuntimeConfiguration.TEXT_TYPE},
@@ -88,8 +89,9 @@ public class RuntimeConfiguration {
             
             for(int i=0; i<args.length; ++i)
             {
-                final String argItem = args[i];
-                String patternString = "(-"+optionItem[0]+"=)("+optionItem[4]+")";
+                final String argItem = args[i].trim();
+                
+                String patternString = "^(-"+optionItem[0]+"=)("+optionItem[4]+")";
                 //System.out.println("pattern: "+patternString+", on "+argItem);
                 
                 try{

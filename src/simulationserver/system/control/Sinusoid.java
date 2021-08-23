@@ -1,5 +1,7 @@
 
-package simulationserver;
+package simulationserver.system.control;
+
+import simulationserver.system.RTAbstractModel;
 
 /**
  *
