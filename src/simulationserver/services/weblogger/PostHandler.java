@@ -28,7 +28,8 @@ public class PostHandler implements HttpHandler {
     }
     
     protected void handleLogin(HttpExchange t) throws IOException {
-        final String data = new String(t.getRequestBody().readAllBytes());
+        //final String data = new String(t.getRequestBody().readAllBytes());
+        final String data = "";
         final String nameRegex = "user=admin";
         final String passRegex = "password=hT6vNm4ssDu";
         

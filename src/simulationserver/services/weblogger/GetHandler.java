@@ -75,7 +75,7 @@ public class GetHandler implements HttpHandler {
             throw new IOException("Template resource doesn't exist");
         
         t.sendResponseHeaders(200, 0);
-        t.getResponseBody().write(template.readAllBytes());
+        //t.getResponseBody().write(template.readAllBytes());
         t.getResponseBody().close();
     }
     
@@ -94,7 +94,7 @@ public class GetHandler implements HttpHandler {
             throw new IOException("Template resource doesn't exist");
         
         t.sendResponseHeaders(200, 0);
-        t.getResponseBody().write(template.readAllBytes());
+        //t.getResponseBody().write(template.readAllBytes());
         t.getResponseBody().close();
     }
 }

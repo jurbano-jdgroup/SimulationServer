@@ -34,7 +34,7 @@ public class ResourceHandler implements HttpHandler {
         
         exchange.getResponseHeaders().add("Content-Type", this.resourceTypeMap.get(this.resource));
         exchange.sendResponseHeaders(200, 0);
-        exchange.getResponseBody().write(in.readAllBytes());
+        //exchange.getResponseBody().write(in.readAllBytes());
         exchange.close();
     }
 }
