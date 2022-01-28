@@ -7,6 +7,7 @@ import simulationserver.system.RTAbstractModel;
 import simulationserver.system.control.SecondOrderSystem;
 import simulationserver.system.control.FirstOrderSystem;
 import simulationserver.system.control.ThirdOrderSystem;
+import simulationserver.system.control.per2022I.Per2022IMapper;
 
 /**
  *
@@ -324,6 +325,23 @@ public class MainWorker extends ThreadWorkerAbstract {
                     planta4.setStepSize(sampleTime);
                     
                     this.server.setModel(planta4);
+                }
+                
+                // P2022-I
+                final SystemMapper p20221Mapper = new Per2022IMapper();
+                final java.util.Iterator<String> it = p20221Mapper.getSystems().iterator();
+                
+                while (it.hasNext()) {
+                    String systemName = (String) it.next();
+                    
+                    if (systemValue.compareToIgnoreCase(systemName)==0) {
+                        RTAbstractModel system = p20221Mapper.getSystem(systemName);
+                        
+                        if (system != null) {
+                            this.server.setModel(system);
+                            break;
+                        }
+                    }
                 }
             }
         }
