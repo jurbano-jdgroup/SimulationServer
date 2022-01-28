@@ -14,7 +14,7 @@ import simulationserver.system.maths.BaseMatrix;
  */
 public class Per2022IMapper implements SystemMapper {
  
-    private Map<String, RTAbstractModel> map;
+    private final Map<String, RTAbstractModel> map;
     
     public Per2022IMapper() {
         this.map = new HashMap();
@@ -63,7 +63,7 @@ public class Per2022IMapper implements SystemMapper {
         
         try {
             system = new simulationserver.system.System(num, den);
-            ((BaseMatrix) system.getA()).dump();
+            //((BaseMatrix) system.getA()).dump();
         }catch (Exception ex) {
             System.out.println("Error creating the system P4: " + ex.getMessage());
         }
