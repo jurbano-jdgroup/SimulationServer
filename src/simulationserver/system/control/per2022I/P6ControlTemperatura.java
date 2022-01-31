@@ -7,9 +7,9 @@ import simulationserver.system.control.SecondOrderSystem;
  *
  * @author Julio
  */
-public class P6ControlPosicion extends  SecondOrderSystem{
+public class P6ControlTemperatura extends  SecondOrderSystem{
     
-    public P6ControlPosicion() {
+    public P6ControlTemperatura() {
         this.s_k = -3.0;
         this.s_b = 1.0;
         this.s_c = 0.6;
