@@ -37,9 +37,6 @@ public class Per2022IMapper implements SystemMapper {
     }
     
     private void loadMappings() {
-        this.map.put("p1_temperatura_cafe", new P1TemperaturaCafe());
-        this.map.put("p2_nivel_calderin", new P2NivelCalderin());
-        this.map.put("p3_generadores_sincronicos", new P3GeneradoresSincronicos());
         this.map.put("p6_control_temperatura", new P6ControlTemperatura());
         this.map.put("p7_control_velocidad", new P7ControlVelocidad());
         
